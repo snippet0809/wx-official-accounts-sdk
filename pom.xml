@@ -34,4 +34,12 @@
         </dependency>
     </dependencies>
 
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub snippet0809 Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/snippet0809/wxpay-sdk</url>
+        </repository>
+    </distributionManagement>
 </project>
