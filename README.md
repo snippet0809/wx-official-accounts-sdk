@@ -22,8 +22,8 @@
 
 <dependency>
     <groupId>io.github.snippet0809</groupId>
-    <artifactId>wx-official-accounts-sdk</artifactId>
-    <version>${wx-official-accounts-sdk.version}</version>
+    <artifactId>wx-accounts-sdk</artifactId>
+    <version>${wx-accounts-sdk.version}</version>
 </dependency>
 ```
 

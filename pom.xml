@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.snippet0809</groupId>
-    <artifactId>wx-official-accounts-sdk</artifactId>
+    <artifactId>wx-accounts-sdk</artifactId>
     <version>1.0</version>
 
     <properties>
