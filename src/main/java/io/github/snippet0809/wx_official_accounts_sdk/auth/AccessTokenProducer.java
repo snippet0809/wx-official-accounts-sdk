@@ -14,6 +14,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class AccessTokenProducer {
 
@@ -38,7 +39,7 @@ public class AccessTokenProducer {
         CloseableHttpClient closeableHttpClient = HttpClients.createDefault();
         CloseableHttpResponse response = closeableHttpClient.execute(httpGet);
         HttpEntity httpEntity = response.getEntity();
-        String res = EntityUtils.toString(httpEntity);
+        String res = EntityUtils.toString(httpEntity, StandardCharsets.UTF_8);
         AccessToken accessToken = JSONObject.parseObject(res, AccessToken.class);
         if (accessToken.getAccessToken() != null) {
             return accessToken;
@@ -53,7 +54,7 @@ public class AccessTokenProducer {
         CloseableHttpClient closeableHttpClient = HttpClients.createDefault();
         CloseableHttpResponse response = closeableHttpClient.execute(httpGet);
         HttpEntity httpEntity = response.getEntity();
-        String res = EntityUtils.toString(httpEntity);
+        String res = EntityUtils.toString(httpEntity, StandardCharsets.UTF_8);
         AuthAccessToken authAccessToken = JSONObject.parseObject(res, AuthAccessToken.class);
         if (authAccessToken.getAccess_token() != null) {
             return authAccessToken;

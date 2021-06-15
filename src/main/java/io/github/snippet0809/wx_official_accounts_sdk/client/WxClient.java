@@ -66,7 +66,7 @@ public class WxClient {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse response = httpClient.execute(httpPost);
         HttpEntity httpEntity = response.getEntity();
-        String entity = httpEntity != null ? EntityUtils.toString(httpEntity) : "";
+        String entity = httpEntity != null ? EntityUtils.toString(httpEntity, StandardCharsets.UTF_8) : "";
         return JSONObject.parseObject(entity, BaseWxApiResEntity.class);
     }
 
@@ -79,7 +79,7 @@ public class WxClient {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse response = httpClient.execute(httpGet);
         HttpEntity httpEntity = response.getEntity();
-        String entity = httpEntity != null ? EntityUtils.toString(httpEntity) : "";
+        String entity = httpEntity != null ? EntityUtils.toString(httpEntity, StandardCharsets.UTF_8) : "";
         return JSONObject.parseObject(entity, JsapiTicket.class);
     }
 
@@ -93,7 +93,7 @@ public class WxClient {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse response = httpClient.execute(httpPost);
         HttpEntity httpEntity = response.getEntity();
-        String entity = httpEntity != null ? EntityUtils.toString(httpEntity) : "";
+        String entity = httpEntity != null ? EntityUtils.toString(httpEntity, StandardCharsets.UTF_8) : "";
         return JSONObject.parseObject(entity, SendTemplateMsgResEntity.class);
     }
 
@@ -108,7 +108,7 @@ public class WxClient {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse response = httpClient.execute(httpGet);
         HttpEntity httpEntity = response.getEntity();
-        String entity = httpEntity != null ? EntityUtils.toString(httpEntity) : "";
+        String entity = httpEntity != null ? EntityUtils.toString(httpEntity, StandardCharsets.UTF_8) : "";
         return JSONObject.parseObject(entity, UserInfo.class);
     }
 
