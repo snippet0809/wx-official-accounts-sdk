@@ -62,7 +62,7 @@ public class WxClient {
         HttpPost httpPost = new HttpPost(url);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("button", buttonList);
-        httpPost.setEntity(new StringEntity(jsonObject.toJSONString()));
+        httpPost.setEntity(new StringEntity(jsonObject.toJSONString(), StandardCharsets.UTF_8));
         CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse response = httpClient.execute(httpPost);
         HttpEntity httpEntity = response.getEntity();
