@@ -67,7 +67,11 @@ public class WxClient {
         CloseableHttpResponse response = httpClient.execute(httpPost);
         HttpEntity httpEntity = response.getEntity();
         String entity = httpEntity != null ? EntityUtils.toString(httpEntity, StandardCharsets.UTF_8) : "";
-        return JSONObject.parseObject(entity, BaseWxApiResEntity.class);
+        BaseWxApiResEntity baseWxApiResEntity = JSONObject.parseObject(entity, BaseWxApiResEntity.class);
+        if (baseWxApiResEntity.getErrcode() != BaseWxApiResEntity.OK) {
+            throw new WxApiException(baseWxApiResEntity.getErrcode(), baseWxApiResEntity.getErrmsg());
+        }
+        return baseWxApiResEntity;
     }
 
     /**
@@ -80,7 +84,11 @@ public class WxClient {
         CloseableHttpResponse response = httpClient.execute(httpGet);
         HttpEntity httpEntity = response.getEntity();
         String entity = httpEntity != null ? EntityUtils.toString(httpEntity, StandardCharsets.UTF_8) : "";
-        return JSONObject.parseObject(entity, JsapiTicket.class);
+        JsapiTicket jsapiTicket = JSONObject.parseObject(entity, JsapiTicket.class);
+        if (jsapiTicket.getErrcode() != BaseWxApiResEntity.OK) {
+            throw new WxApiException(jsapiTicket.getErrcode(), jsapiTicket.getErrmsg());
+        }
+        return jsapiTicket;
     }
 
     /**
@@ -94,7 +102,11 @@ public class WxClient {
         CloseableHttpResponse response = httpClient.execute(httpPost);
         HttpEntity httpEntity = response.getEntity();
         String entity = httpEntity != null ? EntityUtils.toString(httpEntity, StandardCharsets.UTF_8) : "";
-        return JSONObject.parseObject(entity, SendTemplateMsgResEntity.class);
+        SendTemplateMsgResEntity sendTemplateMsgResEntity = JSONObject.parseObject(entity, SendTemplateMsgResEntity.class);
+        if (sendTemplateMsgResEntity.getErrcode() != BaseWxApiResEntity.OK) {
+            throw new WxApiException(sendTemplateMsgResEntity.getErrcode(), sendTemplateMsgResEntity.getErrmsg());
+        }
+        return sendTemplateMsgResEntity;
     }
 
 
@@ -109,7 +121,12 @@ public class WxClient {
         CloseableHttpResponse response = httpClient.execute(httpGet);
         HttpEntity httpEntity = response.getEntity();
         String entity = httpEntity != null ? EntityUtils.toString(httpEntity, StandardCharsets.UTF_8) : "";
-        return JSONObject.parseObject(entity, UserInfo.class);
+        UserInfo userInfo = JSONObject.parseObject(entity, UserInfo.class);
+        if (userInfo.getOpenid() != null) {
+            return userInfo;
+        }
+        BaseWxApiResEntity baseWxApiResEntity = JSONObject.parseObject(entity, BaseWxApiResEntity.class);
+        throw new WxApiException(baseWxApiResEntity.getErrcode(), baseWxApiResEntity.getErrmsg());
     }
 
     /**
