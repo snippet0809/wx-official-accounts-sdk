@@ -33,13 +33,4 @@
             <version>1.4.11.1</version>
         </dependency>
     </dependencies>
-
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub snippet0809 Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/snippet0809/wx-official-accounts-sdk</url>
-        </repository>
-    </distributionManagement>
 </project>
