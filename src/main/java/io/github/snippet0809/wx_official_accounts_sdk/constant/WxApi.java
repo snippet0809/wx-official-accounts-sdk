@@ -12,4 +12,9 @@ public interface WxApi {
 
 
     String GET_USER_INFO = "https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
+
+
+    String CODE2SESSION = "https://api.weixin.qq.com/sns/jscode2session";
+    String GET_ACCESS_TOKEN_ = "https://api.weixin.qq.com/cgi-bin/token";
+    String GET_PHONE_NUMBER = "https://api.weixin.qq.com/wxa/business/getuserphonenumber";
 }
