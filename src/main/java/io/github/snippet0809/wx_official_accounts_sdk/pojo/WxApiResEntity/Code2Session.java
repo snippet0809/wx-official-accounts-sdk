@@ -6,6 +6,8 @@ public class Code2Session extends BaseWxApiResEntity {
 
     @JSONField(name = "session_key")
     private String sessionKey;
+    @JSONField(name = "expires_in")
+    private Integer expiresIn;
     private String unionid;
     private String openid;
 
@@ -15,6 +17,14 @@ public class Code2Session extends BaseWxApiResEntity {
 
     public void setSessionKey(String sessionKey) {
         this.sessionKey = sessionKey;
+    }
+
+    public Integer getExpiresIn() {
+        return expiresIn;
+    }
+
+    public void setExpiresIn(Integer expiresIn) {
+        this.expiresIn = expiresIn;
     }
 
     public String getOpenid() {

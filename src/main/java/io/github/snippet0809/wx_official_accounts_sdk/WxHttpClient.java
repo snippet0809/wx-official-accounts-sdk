@@ -27,7 +27,7 @@ public class WxHttpClient {
     public static <T extends BaseWxApiResEntity> T get(String url, Map<String, String> queryParams, Class<T> tClass) throws IOException, WxApiException {
         String res = get(url, queryParams);
         T t = JSONObject.parseObject(res, tClass);
-        if (t.getErrcode() != BaseWxApiResEntity.OK) {
+        if (t.getErrcode() != null && t.getErrcode() != BaseWxApiResEntity.OK) {
             throw new WxApiException(t.getErrcode(), t.getErrmsg());
         }
         return t;
@@ -40,7 +40,7 @@ public class WxHttpClient {
     public static <T extends BaseWxApiResEntity> T post(String url, Map<String, String> queryParams, Map<String, Object> bodyParams, Class<T> tClass) throws WxApiException, IOException {
         String res = post(url, queryParams, bodyParams);
         T t = JSONObject.parseObject(res, tClass);
-        if (t.getErrcode() != BaseWxApiResEntity.OK) {
+        if (t.getErrcode() != null && t.getErrcode() != BaseWxApiResEntity.OK) {
             throw new WxApiException(t.getErrcode(), t.getErrmsg());
         }
         return t;
